@@ -4,7 +4,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 addr = ('127.0.0.1', 10021)  # 服务器端地址
 
-while True:
+while 1:
     data = input('请输入要处理的数据:')  # 获得数据
     if not data or data.encode() == b'quit':
         break
