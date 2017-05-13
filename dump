@@ -1,0 +1,375 @@
+Conditions:
+    Server: MAX_WINDOW  = 100
+            TIMEOUT     = 1
+    Client: MAX_WINDOW  = 5
+            TIMEOUT     = 5
+Possible Explanation: The server floods the client with data, the client starts sending lots of ACKs which the server receives while blocking the sending thread. Since the timeout interval is too small, and the sending thread was blocked for a considerably long amount of time; a huge number of timeouts and retransmissions occurs at the server-side (nearly each packet it retransmitted). Some counter overflows. 
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+karim@mint17:~/RDT_Over_UDP > python3.4 server.py 
+Server is listening for connections
+Received packet from host  ('127.0.0.1', 44444)
+Server is listening for connections
+Acquiring new vacant socket
+New socket created on port  43918
+Sending: packet  1
+Sending: packet  2
+Sending: packet  3
+Sending: packet  4
+Sending: packet  5
+Sending: packet  6
+Sending: packet  7
+Sending: packet  8
+Sending: packet  9
+Sending: packet  10
+Sending: packet  11
+        ACK received for packet  1
+Sending: packet  12
+Sending: packet  13
+Sending: packet  14
+Sending: packet  15
+Sending: packet  16
+Sending: packet  17
+Sending: packet  18
+Sending: packet  19
+Sending: packet  20
+Sending: packet  21
+Sending: packet  22
+Sending: packet  23
+Sending: packet  24
+Sending: packet  25
+Sending: packet  26
+Sending: packet  27
+Sending: packet  28
+Sending: packet  29
+Sending: packet  30
+Sending: packet  31
+Sending: packet  32
+Sending: packet  33
+        ACK received for packet  2
+Sending: packet  34
+Sending: packet  35
+Sending: packet  36
+Sending: packet  37
+Sending: packet  38
+Sending: packet  39
+Sending: packet  40
+Sending: packet  41
+Sending: packet  42
+Sending: packet  43
+Sending: packet  44
+Sending: packet  45
+Sending: packet  46
+Sending: packet  47
+Sending: packet  48
+Sending: packet  49
+        ACK received for packet  3
+Sending: packet  50
+Sending: packet  51
+Sending: packet  52
+Sending: packet  53
+Sending: packet  54
+Sending: packet  55
+Sending: packet  56
+Sending: packet  57
+Sending: packet  58
+Sending: packet  59
+Sending: packet  60
+Sending: packet  61
+Sending: packet  62
+Sending: packet  63
+Sending: packet  64
+Sending: packet  65
+Sending: packet  66
+Sending: packet  67
+Sending: packet  68
+Sending: packet  69
+Sending: packet  70
+Sending: packet  71
+Sending: packet  72
+Sending: packet  73
+Sending: packet  74
+Sending: packet  75
+Sending: packet  76
+Sending: packet  77
+Sending: packet  78
+Sending: packet  79
+Sending: packet  80
+Sending: packet  81
+Sending: packet  82
+Sending: packet  83
+Sending: packet  84
+Sending: packet  85
+Sending: packet  86
+Sending: packet  87
+Sending: packet  88
+Sending: packet  89
+Sending: packet  90
+Sending: packet  91
+Sending: packet  92
+Sending: packet  93
+Sending: packet  94
+Sending: packet  95
+Sending: packet  96
+Sending: packet  97
+Sending: packet  98
+Sending: packet  99
+Sending: packet  100
+        ACK received for packet  4
+        ACK received for packet  5
+        ACK received for packet  6
+        ACK received for packet  7
+        ACK received for packet  8
+        Timeout: retransmitting packet  9
+        ACK received for packet  9
+        ACK received for packet  10
+        Timeout: retransmitting packet  10
+        Timeout: retransmitting packet  11
+        Timeout: retransmitting packet  12
+        ACK received for packet  11
+        Timeout: retransmitting packet  13
+        Timeout: retransmitting packet  14
+        Timeout: retransmitting packet  15
+        Timeout: retransmitting packet  16
+        Timeout: retransmitting packet  17
+        Timeout: retransmitting packet  18
+        Timeout: retransmitting packet  19
+        Timeout: retransmitting packet  20
+        Timeout: retransmitting packet  21
+        Timeout: retransmitting packet  22
+        Timeout: retransmitting packet  23
+        Timeout: retransmitting packet  24
+        Timeout: retransmitting packet  25
+        ACK received for packet  12
+        Timeout: retransmitting packet  26
+        Timeout: retransmitting packet  27
+        Timeout: retransmitting packet  28
+        Timeout: retransmitting packet  29
+        ACK received for packet  13
+        ACK received for packet  14
+        Timeout: retransmitting packet  30
+        Timeout: retransmitting packet  31
+        ACK received for packet  15
+        Timeout: retransmitting packet  36
+        Timeout: retransmitting packet  101
+        Timeout: retransmitting packet  33
+        Timeout: retransmitting packet  32
+        Timeout: retransmitting packet  35
+        Timeout: retransmitting packet  34
+        ACK received for packet  16
+        Timeout: retransmitting packet  37
+        Timeout: retransmitting packet  38
+        Timeout: retransmitting packet  39
+        Timeout: retransmitting packet  40
+        Timeout: retransmitting packet  41
+        Timeout: retransmitting packet  42
+        Timeout: retransmitting packet  43
+        Timeout: retransmitting packet  44
+        Timeout: retransmitting packet  45
+        Timeout: retransmitting packet  46
+        Timeout: retransmitting packet  47
+        ACK received for packet  17
+        Timeout: retransmitting packet  48
+        Timeout: retransmitting packet  49
+        ACK received for packet  18
+        Timeout: retransmitting packet  102
+        ACK received for packet  19
+        Timeout: retransmitting packet  50
+        ACK received for packet  20
+        ACK received for packet  21
+        ACK received for packet  22
+        Timeout: retransmitting packet  51
+        ACK received for packet  23
+        ACK received for packet  24
+        Timeout: retransmitting packet  52
+        ACK received for packet  25
+        ACK received for packet  26
+        Timeout: retransmitting packet  53
+        Timeout: retransmitting packet  54
+        ACK received for packet  27
+        ACK received for packet  28
+        Timeout: retransmitting packet  55
+        Timeout: retransmitting packet  56
+        ACK received for packet  29
+        Timeout: retransmitting packet  57
+        Timeout: retransmitting packet  58
+        Timeout: retransmitting packet  59
+        ACK received for packet  30
+        ACK received for packet  31
+        Timeout: retransmitting packet  60
+        ACK received for packet  32
+        ACK received for packet  33
+        Timeout: retransmitting packet  61
+        Timeout: retransmitting packet  62
+        ACK received for packet  101
+        Timeout: retransmitting packet  63
+        ACK received for packet  34
+        Timeout: retransmitting packet  64
+        Timeout: retransmitting packet  65
+        ACK received for packet  35
+        ACK received for packet  36
+        Timeout: retransmitting packet  66
+        ACK received for packet  37
+        Timeout: retransmitting packet  67
+        ACK received for packet  38
+        ACK received for packet  39
+        Timeout: retransmitting packet  68
+        Timeout: retransmitting packet  69
+        Timeout: retransmitting packet  70
+        Timeout: retransmitting packet  71
+        ACK received for packet  40
+        Timeout: retransmitting packet  72
+        Timeout: retransmitting packet  73
+        ACK received for packet  41
+        ACK received for packet  42
+        Timeout: retransmitting packet  74
+        ACK received for packet  43
+        Timeout: retransmitting packet  75
+        ACK received for packet  44
+        Timeout: retransmitting packet  76
+        ACK received for packet  45
+        Timeout: retransmitting packet  77
+        Timeout: retransmitting packet  78
+        ACK received for packet  46
+        Timeout: retransmitting packet  79
+        Timeout: retransmitting packet  80
+        ACK received for packet  47
+        ACK received for packet  48
+        Timeout: retransmitting packet  81
+        Timeout: retransmitting packet  82
+        Timeout: retransmitting packet  83
+        Timeout: retransmitting packet  84
+        ACK received for packet  49
+        ACK received for packet  102
+        ACK received for packet  50
+        ACK received for packet  51
+        ACK received for packet  52
+        Timeout: retransmitting packet  85
+        Timeout: retransmitting packet  86
+        ACK received for packet  53
+        ACK received for packet  54
+        ACK received for packet  55
+        ACK received for packet  56
+        ACK received for packet  57
+        ACK received for packet  58
+        Timeout: retransmitting packet  87
+        ACK received for packet  59
+        ACK received for packet  60
+        Timeout: retransmitting packet  88
+        ACK received for packet  61
+        Timeout: retransmitting packet  89
+        ACK received for packet  62
+        Timeout: retransmitting packet  90
+        ACK received for packet  63
+        Timeout: retransmitting packet  91
+        Timeout: retransmitting packet  92
+        ACK received for packet  64
+        ACK received for packet  65
+        ACK received for packet  66
+        ACK received for packet  67
+        Timeout: retransmitting packet  93
+        ACK received for packet  68
+        Timeout: retransmitting packet  94
+        ACK received for packet  69
+        Timeout: retransmitting packet  95
+        Timeout: retransmitting packet  97
+        ACK received for packet  70
+        Timeout: retransmitting packet  96
+        Timeout: retransmitting packet  98
+        ACK received for packet  71
+        Timeout: retransmitting packet  105
+        Timeout: retransmitting packet  104
+        Timeout: retransmitting packet  103
+        Timeout: retransmitting packet  100
+        Timeout: retransmitting packet  99
+        Timeout: retransmitting packet  106
+        Timeout: retransmitting packet  107
+        ACK received for packet  72
+        Timeout: retransmitting packet  108
+        Timeout: retransmitting packet  109
+        ACK received for packet  73
+        Timeout: retransmitting packet  110
+        ACK received for packet  74
+        ACK received for packet  75
+        ACK received for packet  76
+        ACK received for packet  77
+        Timeout: retransmitting packet  111
+        ACK received for packet  78
+        Timeout: retransmitting packet  112
+        Timeout: retransmitting packet  113
+        ACK received for packet  79
+        Timeout: retransmitting packet  114
+        ACK received for packet  80
+        ACK received for packet  81
+        ACK received for packet  82
+        ACK received for packet  83
+        ACK received for packet  84
+        Timeout: retransmitting packet  115
+        ACK received for packet  85
+        ACK received for packet  86
+        Timeout: retransmitting packet  116
+        Timeout: retransmitting packet  117
+        ACK received for packet  87
+        ACK received for packet  88
+        Timeout: retransmitting packet  118
+        ACK received for packet  89
+        Timeout: retransmitting packet  119
+        Timeout: retransmitting packet  120
+        Timeout: retransmitting packet  121
+        Timeout: retransmitting packet  122
+        ACK received for packet  90
+        Timeout: retransmitting packet  123
+        Timeout: retransmitting packet  124
+        Timeout: retransmitting packet  125
+        Timeout: retransmitting packet  126
+        ACK received for packet  91
+        ACK received for packet  92
+        Timeout: retransmitting packet  127
+        ACK received for packet  93
+        Timeout: retransmitting packet  128
+        ACK received for packet  94
+        Timeout: retransmitting packet  129
+        ACK received for packet  95
+        Timeout: retransmitting packet  130
+        ACK received for packet  96
+        ACK received for packet  97
+        Timeout: retransmitting packet  131
+        Timeout: retransmitting packet  132
+        Timeout: retransmitting packet  134
+        Timeout: retransmitting packet  133
+        ACK received for packet  98
+        ACK received for packet  99
+        ACK received for packet  100
+        Timeout: retransmitting packet  135
+        Timeout: retransmitting packet  136
+        Timeout: retransmitting packet  137
+        ACK received for packet  103
+        Timeout: retransmitting packet  138
+        ACK received for packet  104
+        Timeout: retransmitting packet  139
+        Timeout: retransmitting packet  140
+        ACK received for packet  105
+        Timeout: retransmitting packet  141
+        ACK received for packet  106
+        Timeout: retransmitting packet  142
+        ACK received for packet  107
+        Timeout: retransmitting packet  143
+        Timeout: retransmitting packet  144
+        ACK received for packet  108
+        Timeout: retransmitting packet  145
+        ACK received for packet  9
+Exception in thread Wait for ACK.:
+Traceback (most recent call last):
+  File "/usr/lib/python3.4/threading.py", line 920, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.4/threading.py", line 868, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/karim/RDT_Over_UDP/selective_repeat_server.py", line 57, in wait_for_ack
+    self.check_list(ackno)
+  File "/home/karim/RDT_Over_UDP/selective_repeat_server.py", line 79, in check_list
+    self.packt.timer_list[ackno - self.base_seqno].cancel()
+IndexError: cannot fit 'numpy.uint32' into an index-sized integer
+
+Done sending, destroying connection
