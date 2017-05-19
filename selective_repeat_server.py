@@ -203,12 +203,16 @@ class SelectiveRepeat:
         self.base_seqno = self.packt.packet_list[0].seqno
         self.send_packet(self.packt.packet_list[0],0)
 
-        # # self.packt.timer_list[packet.seqno - self.base_seqno].cancel()
-        # index = packet.seqno - self.base_seqno
-        # if index >= 0:
-        #     if not PLS.lose_packet(self.p_loss) :
-        #     	self.socket.sendto(pick.dumps(packet), self.dest)
-        #     self.packt.timer_list[packet.seqno - self.base_seqno] = threading.Timer(self.time_out, self.timer_handler, args=(packet, ))
-        #     self.packt.timer_list[packet.seqno - self.base_seqno].start()
-
         self.lock.release()
+
+
+file_name_serevr = 'udp_test_server.txt'
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind(('127.0.0.1', 10021))
+dest = ('127.0.0.1', 53416)
+time_out = 10
+p_loss = 0.123
+window_size = 20
+print("Bound UDP on port 10021...")
+server = SelectiveRepeat(file_name_serevr, sock, dest, time_out, p_loss, window_size)
+server.send_file()

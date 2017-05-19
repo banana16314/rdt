@@ -99,23 +99,23 @@ def timer_handler(self, packet):
     self.timer = threading.Timer(self.time_out, timer_handler, args=(self, packet,))
     self.timer.start()
 
-#
-# file_name_serevr = 'udp_test_server.txt'
-# sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-# sock.bind(('127.0.0.1', 10021))
-# dest = ('127.0.0.1', 53416)
-# time_out = 10
-# p_loss = 0.234
-# print("Bound UDP on port 10021...")
-# server = StopAndWait(sock, dest, time_out, p_loss, file_name_serevr, " ")
-# server.send()
 
-
-file_name_client = 'udp_test_client.txt'
+file_name_serevr = 'udp_test_server.txt'
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind(('127.0.0.1', 53416))
-dest = ('127.0.0.1', 10021)
-timeout = 10
-p_loss = 0.234
-client = StopAndWait(sock, dest, timeout, p_loss, " ", file_name_client)
-client.recv_file()
+sock.bind(('127.0.0.1', 10021))
+dest = ('127.0.0.1', 53416)
+time_out = 10
+p_loss = 0.666
+print("Bound UDP on port 10021...")
+server = StopAndWait(sock, dest, time_out, p_loss, file_name_serevr, " ")
+server.send()
+
+#
+# file_name_client = 'udp_test_client.txt'
+# sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# sock.bind(('127.0.0.1', 53416))
+# dest = ('127.0.0.1', 10021)
+# timeout = 10
+# p_loss = 0.234
+# client = StopAndWait(sock, dest, timeout, p_loss, " ", file_name_client)
+# client.recv_file()

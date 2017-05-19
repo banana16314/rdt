@@ -83,3 +83,13 @@ class SelectiveRepeat:
 			except socket.timeout:
 				self.file.close()
 				break
+
+
+file_name_client = 'udp_test_client.txt'
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind(('127.0.0.1', 53416))
+dest = ('127.0.0.1', 10021)
+timeout = 10
+p_loss = 0.123
+client = SelectiveRepeat(file_name_client, sock, dest, timeout, 20)
+client.recv_file()
